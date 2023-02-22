@@ -10,8 +10,8 @@ export default async function handler(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     const response: AxiosResponse = await axios.get(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      `https://newsapi.org/v2/?q=premier league&apiKey=${process.env
-        .NEWS_SECRET_KEY!}`
+      `https://newsapi.org/v2/everything?q=premier%league&sortBy=popularity&sources=reuters, bbc-news, cnn,espn&apiKey=${process
+        .env.NEWS_SECRET_KEY!}`
     );
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     res.status(200).json(response.data);
