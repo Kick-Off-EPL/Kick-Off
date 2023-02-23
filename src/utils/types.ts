@@ -1,4 +1,4 @@
-export type ResponseData = {
+export type TableResponseData = {
   response: [
     {
       league: {
@@ -7,7 +7,7 @@ export type ResponseData = {
     }
   ];
 };
-export type APIData = {
+export type TableAPIData = {
   team: {
     name: string;
     logo: string;
@@ -23,7 +23,7 @@ export type APIData = {
   points: number;
 };
 
-export type FormattedData = {
+export type TableFormattedData = {
   teamName: string;
   rank: number;
   logo: string;
