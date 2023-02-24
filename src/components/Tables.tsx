@@ -1,51 +1,22 @@
-import { standings } from "./sampleData/testdata";
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import type { TableAPIData, TableFormattedData } from "../utils/types";
 
-// type APIData = {
-//   team: {
-//     name: string;
-//     logo: string;
-//   };
-//   rank: number;
-//   all: {
-//     goals: {
-//       for: number;
-//     };
-//   };
-//   goalsDiff: number;
-//   form: string;
-//   points: number;
-// };
-
-type FormattedData = {
-  teamName: string;
-  rank: number;
-  logo: string;
-  goals: number;
-  plusMinus: number;
-  form: string;
-  points: number;
-};
-
-export default function Table() {
-  const [formattedData, setFormattedData] = useState<FormattedData[]>([]);
-  useEffect(() => {
-    //todo: change to get api data or user serverside props
-    setFormattedData(
-      standings.map((team): FormattedData => {
-        return {
-          teamName: team.team.name,
-          rank: team.rank,
-          logo: team.team.logo,
-          goals: team.all.goals.for,
-          plusMinus: team.goalsDiff,
-          form: team.form,
-          points: team.points,
-        } as FormattedData;
-      })
-    );
-  }, []);
+export default function Table({
+  apiStandings,
+}: {
+  apiStandings: TableAPIData[];
+}) {
+  const formattedData = apiStandings.map((team): TableFormattedData => {
+    return {
+      teamName: team.team.name,
+      rank: team.rank,
+      logo: team.team.logo,
+      goals: team.all.goals.for,
+      plusMinus: team.goalsDiff,
+      form: team.form,
+      points: team.points,
+    };
+  });
 
   return (
     <div className="max-h-96 min-w-fit overflow-y-scroll">
