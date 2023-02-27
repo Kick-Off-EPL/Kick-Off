@@ -81,3 +81,61 @@ export type StatisticAPIData = {
 export type StatisticResponseData = {
   response: Array<StatisticAPIData>;
 };
+type FixtureTeamInfo = {
+  id: number;
+  name: string;
+  logo: string;
+  winner: boolean | null;
+};
+
+type HomeAwayScore = {
+  home: number | null;
+  away: number | null;
+};
+export type FixtureAPIData = {
+  fixture: {
+    id: number;
+    referee: string | null;
+    timezone: string;
+    date: string;
+    timestamp: number;
+    periods: {
+      first: number | null;
+      second: number | null;
+    };
+    venue: {
+      id: number;
+      name: string;
+      city: string;
+    };
+    status: {
+      long: string;
+      short: string;
+      elapsed: number | null;
+    };
+  };
+  league: {
+    id: number;
+    name: string;
+    country: string;
+    logo: string;
+    flag: string;
+    season: number;
+    round: string;
+  };
+  teams: {
+    home: FixtureTeamInfo;
+    away: FixtureTeamInfo;
+  };
+  goals: HomeAwayScore;
+  score: {
+    halftime: HomeAwayScore;
+    fulltime: HomeAwayScore;
+    extratime: HomeAwayScore;
+    penalty: HomeAwayScore;
+  };
+};
+
+export type FixtureResponseData = {
+  response: Array<FixtureAPIData>;
+};
