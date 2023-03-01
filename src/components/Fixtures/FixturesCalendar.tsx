@@ -58,7 +58,7 @@ export default function FixturesCalendar() {
       <div className="w-80 text-center">
         <p className="">{format(selectedDate, fullDateFormat)}</p>
       </div>
-      <div className="flex flex-wrap justify-between p-4">
+      <div className="flex flex-wrap p-6 ">
         {isLoading ? (
           renderSpinner()
         ) : fixtures !== null && fixtures.length > 0 ? (
