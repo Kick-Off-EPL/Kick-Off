@@ -1,6 +1,6 @@
 // import { type any } from "next";
 
 const Scores: any = () => {
-  return();
+  return null;
 };
-  export default Scores;
+export default Scores;

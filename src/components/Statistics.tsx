@@ -1,6 +1,6 @@
 // import { type any } from "next";
 
 const Statistics: any = () => {
-  return();
+  return null;
 };
-  export default Statistics;
+export default Statistics;

@@ -13,7 +13,7 @@
 
 // export default Tables;
 
-import React from 'react';
+import React from "react";
 
 type Listing = {
   id: number;

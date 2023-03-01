@@ -20,5 +20,8 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ["media-3.api-sports.io", "media.api-sports.io"],
+  },
 };
 export default config;
