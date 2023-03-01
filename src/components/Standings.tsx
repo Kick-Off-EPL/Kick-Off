@@ -1,6 +1,6 @@
 // import { type any } from "next";
 
 const Standings: any = () => {
-  return();
+  return null;
 };
-  export default Standings;
+export default Standings;

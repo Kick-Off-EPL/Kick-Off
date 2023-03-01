@@ -47,25 +47,51 @@ export default function Calendar({
   }
 
   return (
-    <>
-      <div className="flex w-64 justify-around p-2 ">
+    <div className="flex w-96 flex-col items-center">
+      <div className="my-4 flex w-80 justify-around ">
         <button
           className="items-center rounded-full border border-transparent bg-green-600 p-2 text-white shadow-sm hover:bg-green-700 active:outline-none active:ring-2 active:ring-green-500 active:ring-offset-2"
           onClick={() => changeMonthHandle("prev")}
         >
-          {"<<"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+            />
+          </svg>
         </button>
-        <div>
+        <div className="flex items-center text-lg font-bold uppercase">
           <span>{format(currentMonth, monthYearFormat)}</span>
         </div>
         <button
           className="items-center rounded-full border border-transparent bg-green-600 p-2 text-white shadow-sm hover:bg-green-700 active:outline-none active:ring-2 active:ring-green-500 active:ring-offset-2"
           onClick={() => changeMonthHandle("next")}
         >
-          {">>"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+            />
+          </svg>
         </button>
       </div>
-      <div className="flex w-72 justify-around">
+      <div className="my-4 flex w-96 justify-around">
         {daysInWeekArr.map((number) => {
           const currentDay = addDays(startDate, number);
           const formattedDate = format(currentDay, dayNumberFormat);
@@ -73,38 +99,71 @@ export default function Calendar({
           return (
             <div
               key={number}
-              className={`cursor-pointer ${
+              className={`flex w-12 cursor-pointer flex-col rounded-full p-2 transition ${
                 isSameDay(currentDay, selectedDate)
-                  ? "bg-green-400"
+                  ? "bg-green-600"
                   : isSameDay(currentDay, new Date())
-                  ? "bg-blue-200"
+                  ? "bg-green-300"
                   : ""
               }`}
               onClick={() => {
                 handleChangeSelectedDate(currentDay);
               }}
             >
-              <div>{format(currentDay, dayOfWeekFormat)}</div>
-              <div>{formattedDate}</div>
+              <div className="text-center">
+                {format(currentDay, dayOfWeekFormat)}
+              </div>
+              <div className="text-center">{formattedDate}</div>
             </div>
           );
         })}
       </div>
-      <div className="flex w-64 justify-around p-2 ">
+      <div className="mt-4 mb-6 flex w-80 justify-around ">
         <button
           className="items-center rounded-full border border-transparent bg-green-600 p-2 text-white shadow-sm hover:bg-green-700 active:outline-none active:ring-2 active:ring-green-500 active:ring-offset-2"
           onClick={() => changeWeekHandle("prev")}
         >
-          {"<"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
         </button>
-        <button onClick={() => setCurrentMonth(new Date())}>Today</button>
+        <button
+          className="inline-flex items-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 active:bg-green-500"
+          onClick={() => setCurrentMonth(new Date())}
+        >
+          TODAY
+        </button>
         <button
           className="items-center rounded-full border border-transparent bg-green-600 p-2 text-white shadow-sm hover:bg-green-700 active:outline-none active:ring-2 active:ring-green-500 active:ring-offset-2"
           onClick={() => changeWeekHandle("next")}
         >
-          {">"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
         </button>
       </div>
-    </>
+    </div>
   );
 }
