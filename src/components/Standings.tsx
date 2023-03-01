@@ -1,12 +1,12 @@
 import Image from "next/image";
-import type { TableAPIData, TableFormattedData } from "../utils/types";
+import type { StandingsAPIData, StandingsFormattedData } from "../utils/types";
 
-export default function Table({
+export default function Standings({
   apiStandings,
 }: {
-  apiStandings: TableAPIData[];
+  apiStandings: StandingsAPIData[];
 }) {
-  const formattedData = apiStandings.map((team): TableFormattedData => {
+  const formattedData = apiStandings.map((team): StandingsFormattedData => {
     return {
       teamName: team.team.name,
       rank: team.rank,

@@ -15,14 +15,24 @@ export default function FixtureCard({ fixture }: Props) {
           <span className="mr-3">
             <Image
               src={fixture.teams.away.logo}
-              width={16}
-              height={16}
+              width={20}
+              height={20}
               alt="team logo"
             />
           </span>
-          <p className="text-sm">{fixture.teams.away.name}</p>
+          <p
+            className={`text-sm ${
+              fixture.teams.away.winner ? "font-bold" : ""
+            }`}
+          >
+            {fixture.teams.away.name}
+          </p>
         </div>
-        {fixture.goals.away !== null && <p>{fixture.goals.away}</p>}
+        {fixture.goals.away !== null && (
+          <p className={fixture.teams.away.winner ? "font-bold" : ""}>
+            {fixture.goals.away}
+          </p>
+        )}
       </div>
       <p className="my-1 pl-8 text-xs font-semibold uppercase">at</p>
       <div className="flex justify-between">
@@ -30,14 +40,24 @@ export default function FixtureCard({ fixture }: Props) {
           <span className="mr-3">
             <Image
               src={fixture.teams.home.logo}
-              width={16}
-              height={16}
+              width={20}
+              height={20}
               alt="team logo"
             />
           </span>
-          <p className="text-sm">{fixture.teams.home.name}</p>
+          <p
+            className={`text-sm ${
+              fixture.teams.home.winner ? "font-bold" : ""
+            }`}
+          >
+            {fixture.teams.home.name}
+          </p>
         </div>
-        {fixture.goals.home !== null && <p>{fixture.goals.home}</p>}
+        {fixture.goals.home !== null && (
+          <p className={fixture.teams.home.winner ? "font-bold" : ""}>
+            {fixture.goals.home}
+          </p>
+        )}
       </div>
     </div>
   );
