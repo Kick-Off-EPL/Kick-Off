@@ -6,29 +6,25 @@ import FixtureCard from "./FixtureCard";
 
 export default function FixturesCalendar() {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [fixtures, setFixtures] = useState<FixtureAPIData[] | null>(
-    sampleData.sort((a, b) =>
-      compareAsc(new Date(a.fixture.date), new Date(b.fixture.date))
-    )
-  );
+  const [fixtures, setFixtures] = useState<FixtureAPIData[] | null>(null);
   const [isLoading, setLoading] = useState(false);
   const fullDateFormat = "MMMM do, yyyy";
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetch(`/api/fixtures/${selectedDate.toISOString()}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const unsortedFixtures = data as FixtureAPIData[];
-  //       setFixtures(
-  //         unsortedFixtures.sort((a, b) =>
-  //           compareAsc(new Date(a.fixture.date), new Date(b.fixture.date))
-  //         )
-  //       );
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [selectedDate]);
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/fixtures/${selectedDate.toISOString()}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const unsortedFixtures = data as FixtureAPIData[];
+        setFixtures(
+          unsortedFixtures.sort((a, b) =>
+            compareAsc(new Date(a.fixture.date), new Date(b.fixture.date))
+          )
+        );
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, [selectedDate]);
 
   function handleChangeSelectedDate(date: Date) {
     setSelectedDate(date);
