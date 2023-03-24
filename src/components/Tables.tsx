@@ -70,7 +70,7 @@ const ListingsTable = ({ players }: ListingsTableProps) => {
             ))}
         </tbody>
       </table>
-      <table style={{ flex: 1, width: '30%', borderCollapse: 'collapse', margin: '0 10px' }}>
+      <table style={{ flex: 1, width: '30%', borderCollapse: 'collapse', margin: '1 10px' }}>
         <thead>
           <tr style={{ borderBottom: '2px solid black' }}>
             <th style={{ padding: '10px 0', colSpan: 1, textAlign: 'left' }}></th>
