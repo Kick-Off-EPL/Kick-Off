@@ -1,4 +1,19 @@
-import React from 'react';
+// import { type any } from "next";
+// import React, { useState } from 'react';
+
+// const Tables: any = () => {
+//   return(
+//     <div>
+//       <div>
+//         Hi
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Tables;
+
+import React from "react";
 
 type Listing = {
   id: number;

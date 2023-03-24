@@ -1,6 +1,6 @@
 // import { type any } from "next";
 
 const TeamNavBar: any = () => {
-  return();
+  return null;
 };
-  export default TeamNavBar;
+export default TeamNavBar;

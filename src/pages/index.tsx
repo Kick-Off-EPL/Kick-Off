@@ -1,8 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import News from "../components/News";
 import Link from "next/link";
-import Tables from '../components/Tables';
-import React, { useState } from 'react';
+import Tables from "../components/Tables";
+import type { GetServerSideProps } from "next";
+import React, { useState } from "react";
 
 const Home: NextPage = () => {
 
@@ -24,7 +26,8 @@ const Home: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[white] to-[#15162c]">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">EPL</span> Kick-Off
+            Create <span className="text-[hsl(280,100%,70%)]">EPL</span>{" "}
+            Kick-Off
           </h1>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <div
@@ -71,3 +74,15 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res: Response = await fetch("http://localhost:3000/api/get/news");
+
+  const allNews = await res.json();
+
+  return {
+    props: {
+      allNews: allNews,
+    },
+  };
+};
